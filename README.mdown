@@ -1,0 +1,8 @@
+# My base options
+
+## This have boilerplate files with my settings for WP theme
+
+* \*\*base_wp.php\*\* - base wp functions for wich use into wp templates
+* \*\*base_functions\*\* - base file functions.php for wp theme
+* \*\*shortcode\*\* - collection shortcodes
+* \*\*options\*\* - base option for options-framework plugin
