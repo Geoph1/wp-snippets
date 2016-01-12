@@ -36,16 +36,16 @@ if ( ! function_exists( 'dynamic_sidebar' ) || ! dynamic_sidebar( 'Sidebar Name'
 
 <?php endif; // End Dynamic Sidebar Sidebar Name ?>
 
-<?php if ( is_active_sidebar( 'Sidebar Name' ) ) : ?>
+<?php if ( is_active_sidebar( 'sidebar-id' ) ) : ?>
 	<div id="widget-area" class="widget-area">
-		<?php dynamic_sidebar( 'Sidebar Name' ); ?>
+		<?php dynamic_sidebar( 'sidebar-id' ); ?>
 	</div><!-- .widget-area -->
 <?php endif; ?>
 
 <?php 
 	$args = array(
 		'name'          => __( 'Sidebar name', 'theme_text_domain' ),
-		'id'            => 'unique-sidebar-id',
+		'id'            => 'sidebar-id',
 		'description'   => '',
 		'class'         => '',
 		'before_widget' => '<li id="%1" class="widget %2">',
@@ -71,6 +71,8 @@ if ( ! function_exists( 'dynamic_sidebar' ) || ! dynamic_sidebar( 'Sidebar Name'
 		'posts_per_page'         => 10,
 		'paged'                  => $paged, // номер страницы пагинации, необходим при создании пагинации, использовать глобальную переменную $wp_query
 		'meta_key'       => 'key', // по ключу мета-поля
+		'pagename'		=>  'name_of_page', // по имени страницы, использовать slug
+		'name'			=>  'name_of_post'  // по имени записи, использовать slug 
 	);
 
 	$query = new WP_Query( $args );
@@ -78,6 +80,7 @@ if ( ! function_exists( 'dynamic_sidebar' ) || ! dynamic_sidebar( 'Sidebar Name'
 	// Стандартный запрос в шаблоне темы
 	$query = new WP_Query ( array( 'category_name' => 'blog', 'order' => 'DESC', 'posts_per_page' => 10 ) );
  	$query = new WP_Query ( array( 'post_type' => 'page', 'orderby' => 'rand' ) );
+ 	$query = new WP_Query ( array( 'post_type' => 'page', 'pagename' => 'about' ) );
  	$wp_query = new WP_Query ( array( 'post_type' => 'post', 'category_name' => 'blog', 'paged' => $paged ) );
 ?>
 
